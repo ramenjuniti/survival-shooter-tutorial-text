@@ -1,31 +1,31 @@
-# スコアポイントの表示
-### ここでは，スコアポイントを表示できるようにする
-"HUDCanvas" で右クリックし，"UI > Text" を選択<br>
-"Text" についての詳細は以下のリンクへ
+# スコアポイントの表示
+### ここでは，スコアポイントを表示できるようにする
+"HUDCanvas" で右クリックし，"UI > Text" を選択<br>
+"Text" についての詳細は以下のリンクへ
 ### [Text](https://docs.unity3d.com/ja/2017.3/Manual/script-Text.html)
-<img src="../img/Scoring-points/create-ui-text.png">
+<img src="../img/Scoring-points/create-ui-text.png">
 
-"Text" の名前を "ScoreText" に変更し，<br>
-"React Transform" の "Anchor Presets" を上中央のものにする<br>
-"PosY" を "-55"<br>
-"Width" を "300"，"Height" を "50"<br>
-"Text" を "Score: 0"<br>
-"Font" を "LuckiestGuy"<br>
+"Text" の名前を "ScoreText" に変更し，<br>
+"React Transform" の "Anchor Presets" を上中央のものにする<br>
+"PosY" を "-55"<br>
+"Width" を "300"，"Height" を "50"<br>
+"Text" を "Score: 0"<br>
+"Font" を "LuckiestGuy"<br>
 "Font Size" を "50"<br>
 "Alignment" を 左右上下中央にする<br>
-"Color" を白にする<br>
+"Color" を白にする<br>
 <img src="../img/Scoring-points/score-text-param.png">
 
-"Add Component" で "Shadow" を追加<br>
-以下のように設定する<br>
-"Shadow" についての詳細は以下のリンクへ
+"Add Component" で "Shadow" を追加<br>
+以下のように設定する<br>
+"Shadow" についての詳細は以下のリンクへ
 ### [Shadow](https://docs.unity3d.com/ja/2017.3/Manual/script-Shadow.html)
 <img src="../img/Scoring-points/add-component-shadow.png">
 
 "Assets > Scripts > Manager" フォルダ内の "ScoreManager" を "ScoreText" にドロップ
 <img src="../img/Scoring-points/drop-score-manager.png">
 
-"ScoreManager" を確認する
+"ScoreManager" を確認する
 ```
 using UnityEngine;
 using UnityEngine.UI;
@@ -53,7 +53,7 @@ public class ScoreManager : MonoBehaviour {
 ```
 
 "Assets > Scripts > Enemy" フォルダ内の "EnemyHealth" をエディタで開く<br>
-90行目のコメントアウトを解除する<br>
+90行目のコメントアウトを解除する<br>
 コードは以下のようになる
 ```
 using UnityEngine;
@@ -144,7 +144,7 @@ public class EnemyHealth : MonoBehaviour {
     // true にすることで update で沈みこませる
     isSinking = true;
 
-    // スコアを加算
+    // スコアを加算
     ScoreManager.score += scoreValue;
 
     // オブジェクトの削除
@@ -154,13 +154,13 @@ public class EnemyHealth : MonoBehaviour {
 ```
 
 テストプレイをする<br>
-敵を倒した時，スコアポイントが増えれば問題ない
+敵を倒した時，スコアポイントが増えれば問題ない
 <img src="../img/Scoring-points/test-play.png">
 
-"Zombunny" を "Assets > Prefabs" にドロップし,<br>
+"Zombunny" を "Assets > Prefabs" にドロップし,<br>
 "Zombunny" をプレハブ化する
 <img src="../img/Scoring-points/drop-zombunny.png">
 
-"Hierarchy" から "Zombunny" を削除し,シーンを保存する
+"Hierarchy" から "Zombunny" を削除し,シーンを保存する
 <img src="../img/Scoring-points/delete-zombunny.png">
 

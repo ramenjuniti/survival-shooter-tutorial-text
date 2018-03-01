@@ -1,35 +1,35 @@
 # 敵の実装
-### ここでは，プレイヤーを襲う敵を実装する
+### ここでは，プレイヤーを襲う敵を実装する
 
-"Assets > Models > Characters" 内の "Zombunny" を "Hierarchy" にドロップ
-<img src="../img/creating-Enemy/drop-Zombunny.png">
+"Assets > Models > Characters" 内の "Zombunny" を "Hierarchy" にドロップ
+<img src="../img/creating-Enemy/drop-Zombunny.png">
 
-"Zombunny" を選択し，"Inspector" 内の "Layer" を "Shootable" に変更する
+"Zombunny" を選択し，"Inspector" 内の "Layer" を "Shootable" に変更する
 <img src="../img/creating-Enemy/Zombunny-layer-change.png">
 
 "Yes, change children" を選択
 <img src="../img/creating-Enemy/change-layer.png">
 
-"Zombunny" に "Add Component" で "Rigidbody"を追加<br>
+"Zombunny" に "Add Component" で "Rigidbody"を追加<br>
 プロパティは以下のように設定する
 <img src="../img/creating-Enemy/add-component-rigidbody.png">
 
-同様に "Capsule Collider" を追加し，プロパティを以下のように設定
+同様に "Capsule Collider" を追加し，プロパティを以下のように設定
 <img src="../img/creating-Enemy/add-component-capsule-collider.png">
-
-"Sphere Collider" を追加し，以下のように設定
+
+"Sphere Collider" を追加し，以下のように設定
 <img src="../img/creating-Enemy/add-component-sphere-collider.png">
 
 "Audio Source" を追加し，以下のように設定
 <img src="../img/creating-Enemy/add-component-audio-source.png">
 
-"Nav Mesh Agent" を追加し，以下のように設定<br>
-"Nav Mesh Agent" を用いて，プレイヤーを追う敵の動きを実装する<br>
-"Nav Mesh Agent" についての詳細は以下のリンクへ
+"Nav Mesh Agent" を追加し，以下のように設定<br>
+"Nav Mesh Agent" を用いて，プレイヤーを追う敵の動きを実装する<br>
+"Nav Mesh Agent" についての詳細は以下のリンクへ
 ### [Nav Mesh Agent](https://docs.unity3d.com/ja/2017.3/Manual/nav-CreateNavMeshAgent.html)
 <img src="../img/creating-Enemy/add-component-nav-mesh-agent.png">
 
-"Window > Navigation" を開く
+"Window > Navigation" を開く
 <img src="../img/creating-Enemy/window-navigation.png">
 
 "Navigation" ウィンドウの "Bake" タブを選択
@@ -38,41 +38,41 @@
 以下のように設定する
 <img src="../img/creating-Enemy/bake-param.png">
 
-"Bake" をクリックし，"Nav Mesh" を生成
+"Bake" をクリックし，"Nav Mesh" を生成
 <img src="../img/creating-Enemy/click-bake.png">
 
-"Animation" フォルダ内で "Create > Animator Controller" を選択<br>
+"Animation" フォルダ内で "Create > Animator Controller" を選択<br>
 "EnemyAC" とする
 <img src="../img/creating-Enemy/create-AC.png">
 
-"EnemyAC" を "Zombunny" にドロップする
+"EnemyAC" を "Zombunny" にドロップする
 <img src="../img/creating-Enemy/drop-enemy-ac.png">
 
-"EnemyAC" をダブルクリックで開き，"Assets > Models > Characters" 内の<br>
-"Zombunny" から "Idle"，"Move"，"Death" を "Animator" ウィンドウにドロップ<br>
-このとき，"Move" がオレンジ色でなければ，"Move" を右クリックでデフォルトステートにする
+"EnemyAC" をダブルクリックで開き，"Assets > Models > Characters" 内の<br>
+"Zombunny" から "Idle"，"Move"，"Death" を"Animator" ウィンドウにドロップ<br>
+このとき，"Move" がオレンジ色でなければ，"Move" を右クリックでデフォルトステートにする
 <img src="../img/creating-Enemy/drop-animations.png">
 
 "Make Transition" で以下のように矢印を結ぶ
 <img src="../img/creating-Enemy/make-transition.png">
 
-"PlayerDead" と "Dead" という "Trigger Parameter" を作成
+"PlayerDead" と "Dead" という "Trigger Parameter" を作成
 <img src="../img/creating-Enemy/make-animation-param.png">
 
-"Move → Idle" の "Contidion" を "PlayerDead" に設定
+"Move → Idle" の "Contidion" を "PlayerDead" に設定
 <img src="../img/creating-Enemy/condition-playerdead.png">
 
-"Any State → Death" の "Contidion" を "Dead" に設定<br>
-このアニメーションウィンドウ内のステートの関係が意味するのは，<br>
-**"PlayerDead" が "False" ならば，"Move" の状態でプレイヤーを追いかけ，逆に "True" になると，"Idle" 状態になる。"Dead" が "True" になると "Death" 状態になる**
+"Any State → Death" の "Contidion" を "Dead" に設定<br>
+このアニメーションウィンドウ内のステートの関係が意味するのは，<br>
+**"PlayerDead" が "False" ならば，"Move" の状態でプレイヤーを追いかけ，逆に "True" になると，"Idle" 状態になる。"Dead" が "True" になると "Death" 状態になる**
 <br>
-ということである
+ということである
 <img src="../img/creating-Enemy/condition-dead.png">
 
-"Assets > Script > Enemy" フォルダから "EnemyMovement" を "Zombunny" へドロップ
+"Assets > Script > Enemy" フォルダから "EnemyMovement" を "Zombunny" へドロップ
 <img src="../img/creating-Enemy/drop-enemymovement.png">
 
-"EnemyMovement" を確認してみる
+"EnemyMovement" を確認してみる
 ```
 using UnityEngine;
 using System.Collections;
@@ -125,6 +125,6 @@ public class EnemyMovement : MonoBehaviour {
 }
 ```
 
-テストプレイしてみて，プレイヤーの移動に敵がついてくるようになれば，問題ない<br>
+テストプレイしてみて，プレイヤーの移動に敵がついてくるようになれば，問題ない<br>
 このとき，"Player" の "Inspector" 内の "Tag" が "Player" になっているかどうかに注意
 <img src="../img/creating-Enemy/test-play.png">
